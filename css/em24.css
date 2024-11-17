@@ -38,7 +38,7 @@
 
 
 body {
-    padding: 5%;
+    padding: 4%;
     font-family: "Roboto", sans-serif !important;
     background-color: #140f2f !important;
     background: url(../images/em24-bg.jpg) !important;
@@ -62,7 +62,7 @@ body {
     margin-top: 3.5%;
     color: #fff;
     font-weight: 300;
-    font-size: 2vw;
+    font-size: 1.75vw;
     max-width: 50%;
     text-align: center;
 }
@@ -84,13 +84,14 @@ textarea {
     float: unset;
     display: flex;
     justify-content: center;
-    padding-top: 3%;
+    padding-top: 2.5%;
 }
 
 .fields-container div.btn-container .btn-continuar {
     background-color: #00b8eb;
-    font-size: 2.5vw !important;
-    padding: 6% !important;
+    font-size: 2.25vw !important;
+    padding: 5% !important;
+    width: 60%;
     text-transform: uppercase;
     font-weight: 700;
     transition: .2s ease-in-out;
@@ -114,7 +115,10 @@ textarea {
     input,
     textarea {
         max-width: 85%;
+    }
 
+    .fields-container div.btn-container .btn-continuar {
+        width: 70%;
     }
 }
 
@@ -141,6 +145,7 @@ textarea {
     .fields-container div.btn-container .btn-continuar {
         font-size: 3vw !important;
         padding: 8% !important;
+        width: 100%;
     }
 }
 
@@ -155,7 +160,7 @@ textarea {
 
     .content p {
         margin-top: 10%;
-        max-width: 80%;
+        max-width: 70%;
         font-size: 3.7vw;
     }
 
@@ -175,6 +180,5 @@ textarea {
     .fields-container div.btn-container .btn-continuar {
         font-size: 3.5vw !important;
         padding: 11% !important;
-
     }
 }
