@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title></title>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="css/style.css" rel="stylesheet" type="text/css" />
+	<link href="css/em24.css" rel="stylesheet" type="text/css" />
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body class="totem">
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content">
+					<img src="images/em24-logo.jpg" alt="">
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content">
+					<p>Texto simulado Lorem ipsum sit, amet consectetur adipisicing elit.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="fields-container">
+					<div style="visibility: hidden;" class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="text" id="txtNombre" placeholder="Nombre" class="form-control" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input type="text" id="txtApellido" placeholder="Mi nombre" class="form-control" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<textarea id="txtMensaje" rows="6" placeholder="Dejá una frase"
+									class="form-control"></textarea>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="btn-container">
+								<input type="button" id="btnEnviar" onClick="enviar()" class="btn btn-continuar"
+									value="Enviar" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="loading" class="loading">
+		<img src="./images/loader.gif" />
+	</div>
+
+	<script type="text/javascript">
+
+		$(function () {
+			$("#loading").hide();
+		});
+
+		function enviar() {
+			if (validate()) {
+				$("#loading").show();
+				var parametros = "pnom=" + $("#txtNombre").val() + "&pape=" + $("#txtApellido").val() + "&pmsg=" + $("#txtMensaje").val();
+
+				$.ajax({
+					data: parametros,
+					url: 'save.php',
+					type: 'post',
+
+					success: function (response) {
+						$("#loading").hide();
+						console.log("Parsed response:", response); // Muestra la respuesta analizada
+
+						if (response.datos && response.datos.length > 0) {
+							console.log("ID from response:", response.datos[0].id); // Muestra el ID de la respuesta
+
+							if (parseInt(response.datos[0].id) > 0) {
+								alert('Datos Enviados');
+								limpiar();
+							} else {
+								alert('No se han podido enviar los datos');
+								alert(response.datos[0].resultado);
+							}
+						} else {
+							alert('No se han podido enviar los datos');
+						}
+					},
+					error: function (jqXHR, textStatus, errorThrown) {
+						$("#loading").hide();
+						alert('No se han podido enviar los datos');
+						console.error("Error occurred:", textStatus, errorThrown); // Mostrar más detalles del error
+					}
+				});
+			}
+		}
+
+		function validate() {
+			var ret = true;
+
+			if ($("#txtApellido").val().trim().length < 1) {
+				ret = false;
+			}
+			if ($("#txtMensaje").val().trim().length < 1) {
+				ret = false;
+			}
+
+			return ret;
+		}
+
+		function limpiar() {
+			$("#txtNombre").val('');
+			$("#txtApellido").val('');
+			$("#txtMensaje").val('');
+		}
+
+		function jsonEscape(str) {
+			return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+		}
+
+	</script>
+
+</body>
+
+</html>
