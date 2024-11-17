@@ -169,12 +169,12 @@ textarea {
         border-radius: 8px !important;
         max-width: 100%;
         font-size: 4vw !important;
-        padding: 2.5% 2.8% !important;
+        padding: 3.5% !important;
 
     }
 
     .fields-container {
-        margin-top: -7%;
+        margin-top: -10%;
     }
 
     .fields-container div.btn-container .btn-continuar {
