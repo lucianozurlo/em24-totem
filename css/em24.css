@@ -161,14 +161,14 @@ textarea {
     .content p {
         margin-top: 11%;
         max-width: 90%;
-        font-size: 4.2vw;
+        font-size: 4.5vw;
     }
 
     input,
     textarea {
         border-radius: 8px !important;
         max-width: 100%;
-        font-size: 3.5vw !important;
+        font-size: 4vw !important;
         padding: 2.5% 2.8% !important;
 
     }
@@ -178,7 +178,7 @@ textarea {
     }
 
     .fields-container div.btn-container .btn-continuar {
-        font-size: 4.2vw !important;
+        font-size: 4.5vw !important;
         padding: 11% !important;
     }
 }
